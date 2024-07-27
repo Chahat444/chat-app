@@ -1,5 +1,6 @@
+import { cn } from '@/lib/utils'
 import { VariantProps, cva } from 'class-variance-authority'
-import { Loader2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react' //for icons ans animation
 import { ButtonHTMLAttributes, FC, HTMLAttributes } from 'react'
 
 const buttonVariants = cva(
@@ -33,7 +34,8 @@ const Button: FC<ButtonProps> = ({
     size,
     ...props
 }) => {
-  return <button className={cn(buttonVariants({variant,size,className }))} disabled={isLoading} {...props}> 
+  return <button className={cn(buttonVariants({variant,size,className }))} //so that we can overwrite the styles of the button
+  disabled={isLoading} {...props}> 
   {isLoading ? <Loader2 className='mr-2 h-4 w-4 animate-spin' /> : null}
   {children}
   </button>

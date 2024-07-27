@@ -1,6 +1,8 @@
-import Image from "next/image";
+import Button from '@/components/UI/Button'
+import { db } from '@/lib/db'
 
-export default function Home() {
-  return <div className="text-red-500">hello</div>
+export default async function Home() {
+  
+  return <Button> Hello</Button>
   
 }
