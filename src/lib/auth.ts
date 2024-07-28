@@ -20,6 +20,7 @@ if(!clientSecret || clientSecret.length === 0){
 return { clientId , clientSecret}
 }
 
+//we are creating a const authOptions of type NextAuthOptions(if we want, we can create an interface and describe that type object's properties )
 export const authOptions: NextAuthOptions={
 
     /*adapter means everytime someone login with their email
