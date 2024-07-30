@@ -8,11 +8,11 @@ interface ProvidersProps {
   children: React.ReactNode
 }
 
-const Providers: FC<ProvidersProps> = ({}) => {
+const Providers: FC<ProvidersProps> = ({children}) => {
   return(
   <>
     <Toaster position='top-center' reverseOrder={false}/>
-    {Children}
+    {children}
   </>
   )
 }

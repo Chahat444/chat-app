@@ -3,53 +3,56 @@
 
 'use client'
 
-import Button from '@/components/UI/Button'
-import { FC, useState } from 'react'
-import { signIn } from 'next-auth/react'
-//for handling toast notification
-import { toast } from 'react-hot-toast'
+import Button from '@/components/UI/Button';
+import { FC, useState } from 'react';
+import { signIn } from 'next-auth/react';
+// For handling toast notifications
+import { toast } from 'react-hot-toast';
 
 const Page: FC = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function loginWithGoogle() {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      await signIn('google')
+      await signIn('google');
     } catch (error) {
-      // display error message to user
-      toast.error('Something went wrong with your login.')
+      // Display an error message if something goes wrong
+      toast.error('Something went wrong with your login.');
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
   return (
-    <>
-      <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
-        <div className='w-full flex flex-col items-center max-w-md space-y-8'>
-          <div className='flex flex-col items-center gap-8 bg-pink-300'>
-            logo
-            <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
-              Sign in to your account
-            </h2>
-          </div>
+    <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
+      <div className='w-full flex flex-col items-center max-w-md space-y-8'>
+        <div className='flex flex-col items-center gap-8'>
+          {/* Placeholder for logo */}
+          <div className='text-xl font-bold'>Logo</div>
+          <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
+            Sign in to your account
+          </h2>
+        </div>
 
-          <Button
-            isLoading={isLoading}
-            type='button'
-            className='max-w-sm mx-auto w-full'
-            onClick={loginWithGoogle}>
-            {isLoading ? null : (
+        <Button
+          isLoading={isLoading}
+          type='button'
+          className='max-w-sm mx-auto w-full bg-slate-600'
+          onClick={loginWithGoogle}
+        >
+          {isLoading ? (
+            <span>Loading...</span>
+          ) : (
+            <>
               <svg
                 className='mr-2 h-4 w-4'
                 aria-hidden='true'
                 focusable='false'
-                data-prefix='fab'
-                data-icon='github'
                 role='img'
                 xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 24 24'>
+                viewBox='0 0 24 24'
+              >
                 <path
                   d='M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z'
                   fill='#4285F4'
@@ -68,14 +71,13 @@ const Page: FC = () => {
                 />
                 <path d='M1 1h22v22H1z' fill='none' />
               </svg>
-            )}
-            Google
-          </Button>
-        </div>
+              Google
+            </>
+          )}
+        </Button>
       </div>
-    </>
+    </div>
   )
 }
 
-export default Page
-
+export default Page;
